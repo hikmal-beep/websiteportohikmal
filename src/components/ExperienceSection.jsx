@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { experiences } from '../data/experience'
 import CyberTag from './ui/CyberTag'
 import GlassCard from './ui/GlassCard'
@@ -19,25 +20,27 @@ export default function ExperienceSection() {
           {experiences.map((exp, index) => (
             <RevealWrapper key={exp.id} delay={index * 100} style={{ position: 'relative', marginBottom: '2rem' }}>
               <div className="timeline-node" style={nodeStyle(exp.current)} />
-              <GlassCard>
-                <div className="experience-head">
-                  <div>
-                    <p className="experience-role">{exp.role}</p>
-                    <p className="experience-meta">
-                      {exp.company} - {exp.location} - {exp.type}
-                    </p>
+              <Link to={`/experience/${exp.id}`} style={{ display: 'block', textDecoration: 'none' }}>
+                <GlassCard>
+                  <div className="experience-head">
+                    <div>
+                      <p className="experience-role">{exp.role}</p>
+                      <p className="experience-meta">
+                        {exp.company} - {exp.location} - {exp.type} - {exp.period}
+                      </p>
+                    </div>
+                    <CyberTag label={exp.period} />
                   </div>
-                  <CyberTag label={exp.period} />
-                </div>
-                <ul className="bullet-list">
-                  {exp.bullets.map((bullet) => (
-                    <li key={bullet}>
-                      <span aria-hidden="true">::</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </GlassCard>
+                  <ul className="bullet-list">
+                    {exp.bullets.map((bullet) => (
+                      <li key={bullet}>
+                        <span aria-hidden="true">::</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </GlassCard>
+              </Link>
             </RevealWrapper>
           ))}
         </div>

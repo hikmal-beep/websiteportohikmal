@@ -1,81 +1,87 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 export default function VideoBackground() {
-  const videoRef = useRef(null)
-  const [isReady, setIsReady] = useState(false)
-  const [videoError, setVideoError] = useState(false)
-  const [reducedMotion, setReducedMotion] = useState(false)
-
-  useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const updatePreference = () => setReducedMotion(query.matches)
-
-    updatePreference()
-    query.addEventListener('change', updatePreference)
-
-    return () => query.removeEventListener('change', updatePreference)
-  }, [])
+  const videoRef = useRef()
+  const [ready, setReady] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const interactedRef = useRef(false)
 
   useEffect(() => {
     const video = videoRef.current
-    if (!video || videoError) return undefined
+    if (!video) return
 
-    const markReady = () => {
-      setIsReady(true)
-      if (reducedMotion) {
-        video.pause()
-        return
+    let retryTimeout
+    let cancelled = false
+
+    const playVideo = () => {
+      if (cancelled) return
+      video.play()
+        .then(() => {
+          interactedRef.current = true
+          setReady(true)
+        })
+        .catch(() => {
+          if (!interactedRef.current && !cancelled) {
+            retryTimeout = setTimeout(playVideo, 300)
+          }
+        })
+    }
+
+    const handleCanPlay = () => {
+      setLoading(false)
+      playVideo()
+    }
+
+    const handleUserInteraction = () => {
+      if (!interactedRef.current) {
+        interactedRef.current = true
+        playVideo()
       }
-
-      video.play().catch(() => {
-        // Muted autoplay usually succeeds; this keeps the first frame visible if it does not.
-        setIsReady(true)
-      })
     }
 
-    const handleVideoError = () => {
-      setVideoError(true)
-    }
+    video.addEventListener('canplay', handleCanPlay)
+    video.addEventListener('loadeddata', () => setLoading(false))
 
-    const retryPlay = () => {
-      if (!reducedMotion) {
-        video.play().catch(() => undefined)
-      }
-      document.removeEventListener('pointerdown', retryPlay)
-    }
+    const readyTimeout = setTimeout(() => {
+      if (!cancelled) playVideo()
+    }, 500)
 
-    video.addEventListener('canplay', markReady)
-    video.addEventListener('error', handleVideoError)
-    document.addEventListener('pointerdown', retryPlay, { once: true })
-
-    if (video.readyState >= 3) {
-      markReady()
-    }
+    document.addEventListener('click', handleUserInteraction, { once: true })
+    document.addEventListener('touchstart', handleUserInteraction, { once: true })
 
     return () => {
-      video.removeEventListener('canplay', markReady)
-      video.removeEventListener('error', handleVideoError)
-      document.removeEventListener('pointerdown', retryPlay)
+      cancelled = true
+      clearTimeout(retryTimeout)
+      clearTimeout(readyTimeout)
+      video.removeEventListener('canplay', handleCanPlay)
+      video.removeEventListener('loadeddata', () => setLoading(false))
+      document.removeEventListener('click', handleUserInteraction)
+      document.removeEventListener('touchstart', handleUserInteraction)
     }
-  }, [reducedMotion, videoError])
-
-  if (videoError) {
-    return null
-  }
+  }, [])
 
   return (
     <div className="video-background-container">
+      {loading && (
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 2,
+          display: 'grid', placeItems: 'center',
+          color: 'var(--cyan-dim)', fontFamily: 'JetBrains Mono', fontSize: '0.75rem',
+          opacity: 0.5,
+        }}>
+          Loading...
+        </div>
+      )}
       <video
         ref={videoRef}
-        className={`video-background ${isReady ? 'video-background--ready' : ''}`}
-        autoPlay={!reducedMotion}
+        className={`video-background ${ready ? 'video-background--ready' : ''}`}
+        autoPlay
         loop
         muted
         playsInline
         preload="auto"
       >
         <source src="/Organic_Lines_4K_Motion_Background_Loop.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
     </div>
   )

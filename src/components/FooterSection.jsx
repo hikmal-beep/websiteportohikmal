@@ -24,7 +24,7 @@ export default function FooterSection() {
             Portfolio
           </a>
         </div>
-        <p className="copyright">Copyright 2025 Muhammad Hikmal Akbar</p>
+        <p className="copyright">Copyright 2026 Muhammad Hikmal Akbar</p>
       </div>
     </footer>
   )
