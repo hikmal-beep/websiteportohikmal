@@ -119,7 +119,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -24px;
+  margin-left: -24px;
   transition: none;
   will-change: transform;
 }
