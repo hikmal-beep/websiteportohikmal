@@ -87,7 +87,7 @@ body {
 
 #joystick-zone {
   position: absolute;
-  bottom: 40px;
+  bottom: 110px;
   left: 50%;
   transform: translateX(-50%);
   width: 120px;
@@ -130,7 +130,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   position: absolute;
-  bottom: 140px;
+  bottom: 210px;
   left: calc(50% + 80px);
   width: 72px;
   height: 72px;
