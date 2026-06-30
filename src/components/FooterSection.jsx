@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { personal } from '../data/personal'
 import ScanLine from './ui/ScanLine'
 
@@ -14,6 +15,7 @@ export default function FooterSection() {
           <p className="footer-note">{personal.footerNote}</p>
         </div>
         <div className="footer-links">
+          <Link to="/services">Services</Link>
           <a href={personal.links.linkedin} target="_blank" rel="noreferrer">
             LinkedIn
           </a>

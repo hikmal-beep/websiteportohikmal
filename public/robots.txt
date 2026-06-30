@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hikmalakbar.my.id/sitemap.xml

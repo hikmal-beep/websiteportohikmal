@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react'
-import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import VideoBackground from './components/VideoBackground'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -14,6 +14,7 @@ import ScanLine from './components/ui/ScanLine'
 import ExperienceDetailSection from './components/ExperienceDetailSection'
 import ProjectDetailSection from './components/ProjectDetailSection'
 import AchievementDetailSection from './components/AchievementDetailSection'
+import ServicesSection from './components/ServicesSection'
 import './index.css'
 
 function HomePage() {
@@ -48,7 +49,7 @@ function HomePage() {
 function App() {
   return (
     <ChakraProvider value={defaultSystem}>
-      <HashRouter>
+      <BrowserRouter>
         <div style={{ position: 'relative', minHeight: '100vh' }}>
           <VideoBackground />
           <Navbar />
@@ -58,12 +59,13 @@ function App() {
               <Route path="/experience/:id" element={<ExperienceDetailSection />} />
               <Route path="/projects/:id" element={<ProjectDetailSection />} />
               <Route path="/achievements/:id" element={<AchievementDetailSection />} />
+              <Route path="/services" element={<ServicesSection />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
           <FooterSection />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </ChakraProvider>
   )
 }
