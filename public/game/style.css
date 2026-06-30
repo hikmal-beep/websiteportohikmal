@@ -88,16 +88,17 @@ body {
 #joystick-zone {
   position: absolute;
   bottom: 40px;
-  left: 40px;
-  width: 140px;
-  height: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
   pointer-events: auto;
   touch-action: none;
 }
 
 #joystick-base {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 60%, rgba(0,0,0,0.15) 100%);
   border: 2px solid rgba(255, 255, 255, 0.15);
@@ -109,8 +110,8 @@ body {
 }
 
 #joystick-knob {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.08) 100%);
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -129,8 +130,8 @@ body {
   user-select: none;
   -webkit-user-select: none;
   position: absolute;
-  bottom: 56px;
-  right: 32px;
+  bottom: 140px;
+  left: calc(50% + 80px);
   width: 72px;
   height: 72px;
   border-radius: 50%;
