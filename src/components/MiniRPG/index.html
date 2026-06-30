@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini 2D RPG Exploration Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game" width="960" height="540" aria-label="Mini RPG exploration demo"></canvas>
+    <div id="dialog" class="dialog hidden">
+      <div id="dialog-name" class="dialog-name"></div>
+      <div id="dialog-text" class="dialog-text"></div>
+      <div class="dialog-next">[F] Next</div>
+    </div>
+
+    <div id="mobile-controls">
+      <div id="dpad">
+        <button class="ctrl-btn" data-key="w" aria-label="Up"><span class="arrow up-arrow">▲</span></button>
+        <div class="dpad-row">
+          <button class="ctrl-btn" data-key="a" aria-label="Left"><span class="arrow">◀</span></button>
+          <button class="ctrl-btn" data-key="s" aria-label="Down"><span class="arrow down-arrow">▼</span></button>
+          <button class="ctrl-btn" data-key="d" aria-label="Right"><span class="arrow">▶</span></button>
+        </div>
+      </div>
+      <button class="ctrl-btn action-btn" data-key="f" aria-label="Action">Talk</button>
+    </div>
+  </main>
+
+  <script src="js/Input.js"></script>
+  <script src="js/Collision.js"></script>
+  <script src="js/Camera.js"></script>
+  <script src="js/Dialog.js"></script>
+  <script src="js/NPC.js"></script>
+  <script src="js/Player.js"></script>
+  <script src="js/World.js"></script>
+  <script src="js/Game.js"></script>
+  <script src="js/Main.js"></script>
+</body>
+</html>

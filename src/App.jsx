@@ -15,6 +15,7 @@ import ExperienceDetailSection from './components/ExperienceDetailSection'
 import ProjectDetailSection from './components/ProjectDetailSection'
 import AchievementDetailSection from './components/AchievementDetailSection'
 import ServicesSection from './components/ServicesSection'
+import GamePage from './components/GamePage'
 import './index.css'
 
 function HomePage() {
@@ -50,23 +51,36 @@ function App() {
   return (
     <ChakraProvider value={defaultSystem}>
       <BrowserRouter>
-        <div style={{ position: 'relative', minHeight: '100vh' }}>
-          <VideoBackground />
-          <Navbar />
-          <main style={{ position: 'relative', zIndex: 1 }}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/experience/:id" element={<ExperienceDetailSection />} />
-              <Route path="/projects/:id" element={<ProjectDetailSection />} />
-              <Route path="/achievements/:id" element={<AchievementDetailSection />} />
-              <Route path="/services" element={<ServicesSection />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </main>
-          <FooterSection />
-        </div>
+        <AppContent />
       </BrowserRouter>
     </ChakraProvider>
+  )
+}
+
+function AppContent() {
+  const location = useLocation()
+  const isGameRoute = location.pathname === '/game'
+
+  if (isGameRoute) {
+    return <GamePage />
+  }
+
+  return (
+    <div style={{ position: 'relative', minHeight: '100vh' }}>
+      <VideoBackground />
+      <Navbar />
+      <main style={{ position: 'relative', zIndex: 1 }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/experience/:id" element={<ExperienceDetailSection />} />
+          <Route path="/projects/:id" element={<ProjectDetailSection />} />
+          <Route path="/achievements/:id" element={<AchievementDetailSection />} />
+          <Route path="/services" element={<ServicesSection />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+      <FooterSection />
+    </div>
   )
 }
 
