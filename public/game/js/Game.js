@@ -9,13 +9,21 @@ class Game {
     this.dialog = new Dialog();
     this.nearbyNpc = null;
     this.lastTime = 0;
+    this._rafId = null;
+    this._boundResize = () => this.resize();
     this.resize();
 
-    window.addEventListener("resize", () => this.resize());
+    window.addEventListener("resize", this._boundResize);
+  }
+
+  destroy() {
+    if (this._rafId) cancelAnimationFrame(this._rafId);
+    window.removeEventListener("resize", this._boundResize);
+    this.input.destroy();
   }
 
   start() {
-    requestAnimationFrame((time) => this.loop(time));
+    this._rafId = requestAnimationFrame((time) => this.loop(time));
   }
 
   resize() {
@@ -32,7 +40,7 @@ class Game {
     this.update(deltaSeconds);
     this.draw(time);
     this.input.endFrame();
-    requestAnimationFrame((time) => this.loop(time));
+    this._rafId = requestAnimationFrame((time) => this.loop(time));
   }
 
   update(deltaSeconds) {

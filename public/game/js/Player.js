@@ -27,10 +27,19 @@ class Player {
 
     let dx = 0;
     let dy = 0;
-    if (input.isDown("w")) dy -= 1;
-    if (input.isDown("s")) dy += 1;
-    if (input.isDown("a")) dx -= 1;
-    if (input.isDown("d")) dx += 1;
+
+    if (input.joystick.active) {
+      const jd = Math.hypot(input.joystick.dx, input.joystick.dy);
+      if (jd > 0.15) {
+        dx = input.joystick.dx;
+        dy = input.joystick.dy;
+      }
+    } else {
+      if (input.isDown("w")) dy -= 1;
+      if (input.isDown("s")) dy += 1;
+      if (input.isDown("a")) dx -= 1;
+      if (input.isDown("d")) dx += 1;
+    }
 
     this.moving = dx !== 0 || dy !== 0;
     if (this.moving) {
