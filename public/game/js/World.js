@@ -8,7 +8,7 @@ class World {
     this.flowers = [];
 
     this.bgImage = new Image();
-    this.bgImage.src = "Assets/Background.png";
+    this.bgImage.src = "/game/Assets/Background.png";
     this.bgReady = false;
     this.bgImage.onload = () => { this.bgReady = true; };
 
