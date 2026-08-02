@@ -4,7 +4,7 @@ class Game {
     this.ctx = this.canvas.getContext("2d");
     this.input = new Input();
     this.world = new World();
-    this.player = new Player(940, 690);
+    this.player = new Player(512, 1400);
     this.camera = new Camera(this.canvas, this.world.width, this.world.height);
     this.dialog = new Dialog();
     this.nearbyNpc = null;

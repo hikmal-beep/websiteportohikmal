@@ -1,0 +1,74 @@
+BACKGROUND SPECIFICATION
+========================
+
+The world consists of one static background image.
+
+Image Size
+1024 x 1536
+
+Coordinate System
+
+(0,0) = Top Left
+
+X increases right.
+
+Y increases downward.
+
+The image represents an outdoor wedding venue.
+
+Top Region
+-----------
+Dense forest.
+
+Contains:
+
+Trees
+Bushes
+Lanterns
+Vines
+
+Middle Region
+-------------
+Wedding stage.
+
+Contains:
+
+Stone stairs
+Stone platform
+Curtains
+Wood wall
+
+Lower Middle
+------------
+Ceremony floor.
+
+Contains:
+
+Stone tiles
+Red carpet
+
+River
+-----
+Blue river separating north and south.
+
+Bridge
+------
+Wooden bridge connecting both sides.
+
+Lower Region
+------------
+Garden.
+
+Contains:
+
+Grass
+Flowers
+Rocks
+Entrance arch
+Fence
+
+This image never changes.
+
+Nothing in the background moves.
+
+Player and NPCs are rendered above this image.

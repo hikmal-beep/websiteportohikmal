@@ -1,0 +1,82 @@
+WORLD RULES
+===========
+
+RULE 1
+
+The player never walks on water.
+
+RULE 2
+
+Trees always block movement.
+
+RULE 3
+
+Bushes block movement.
+
+RULE 4
+
+The bridge is the ONLY river crossing.
+
+RULE 5
+
+Player cannot leave the visible map.
+
+RULE 6
+
+Grass is walkable.
+
+RULE 7
+
+Stone floor is walkable.
+
+RULE 8
+
+Red carpet is walkable.
+
+RULE 9
+
+Fence blocks movement.
+
+RULE 10
+
+Rocks block movement.
+
+RULE 11
+
+Stage wall blocks movement.
+
+RULE 12
+
+Bridge overrides river collision.
+
+RULE 13
+
+Player collision uses the feet position instead of the entire sprite.
+
+RULE 14
+
+Movement should stop before entering blocked objects.
+
+RULE 15
+
+NPCs obey exactly the same collision rules.
+
+RULE 16
+
+Pathfinding must avoid blocked regions.
+
+RULE 17
+
+Never generate shortcuts through the river.
+
+RULE 18
+
+Bridge must always be selected as the crossing.
+
+RULE 19
+
+Background never changes.
+
+RULE 20
+
+No procedural terrain.

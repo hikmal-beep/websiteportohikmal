@@ -1,0 +1,56 @@
+RENDERING RULES
+===============
+
+Draw Order
+
+Layer 0
+
+Background
+
+Layer 1
+
+Ground Decorations
+
+Layer 2
+
+NPCs
+
+Layer 3
+
+Player
+
+Layer 4
+
+Front Decorations
+
+Examples
+
+Player should appear
+
+under
+
+the flowers of the entrance arch.
+
+Player should appear
+
+above
+
+grass.
+
+Player should appear
+
+above
+
+bridge.
+
+Player should appear
+
+above
+
+stone floor.
+
+If future trees are split into top/bottom images
+
+Tree canopy should render above player.
+
+Tree trunk should render below player.

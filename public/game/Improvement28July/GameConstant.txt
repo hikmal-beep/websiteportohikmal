@@ -1,0 +1,78 @@
+GAME CONSTANTS
+==============
+
+Image Width
+
+1024
+
+Image Height
+
+1536
+
+World Origin
+
+0,0
+
+Suggested Spawn
+
+X
+
+512
+
+Y
+
+1400
+
+Bridge Rectangle
+
+Left
+
+457
+
+Right
+
+567
+
+Top
+
+810
+
+Bottom
+
+1035
+
+Movement Speed
+
+3 px/frame
+
+Diagonal Speed
+
+Normalize Vector
+
+Collision Padding
+
+6 px
+
+Suggested Player Collider
+
+Circle
+
+Radius
+
+14 px
+
+Suggested NPC Collider
+
+Circle
+
+Radius
+
+14 px
+
+Camera
+
+Clamp Inside World
+
+River Crossing
+
+Bridge Only

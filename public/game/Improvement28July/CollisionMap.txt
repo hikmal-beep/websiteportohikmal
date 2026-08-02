@@ -1,0 +1,150 @@
+COLLISION MAP
+=============
+
+Everything belongs to one category.
+
+WALKABLE
+
+or
+
+BLOCKED
+
+--------------------------------------
+
+TREES
+
+Collision
+
+BLOCKED
+
+Reason
+
+Natural map boundary.
+
+--------------------------------------
+
+BUSHES
+
+BLOCKED
+
+--------------------------------------
+
+FOREST EDGE
+
+BLOCKED
+
+--------------------------------------
+
+STONE STAGE
+
+WALKABLE
+
+--------------------------------------
+
+STONE STAIRS
+
+WALKABLE
+
+--------------------------------------
+
+WOOD BACK WALL
+
+BLOCKED
+
+--------------------------------------
+
+CURTAINS
+
+BLOCKED
+
+--------------------------------------
+
+STONE COLUMNS
+
+BLOCKED
+
+--------------------------------------
+
+CEREMONY FLOOR
+
+WALKABLE
+
+--------------------------------------
+
+RED CARPET
+
+WALKABLE
+
+--------------------------------------
+
+RIVER
+
+BLOCKED
+
+Collision Type
+
+Polygon
+
+Player cannot enter.
+
+NPC cannot enter.
+
+Projectiles should stop.
+
+--------------------------------------
+
+WOOD BRIDGE
+
+WALKABLE
+
+Collision Priority
+
+Higher than River.
+
+If player is inside bridge area
+
+Ignore river collision.
+
+--------------------------------------
+
+GRASS
+
+WALKABLE
+
+--------------------------------------
+
+FLOWERS
+
+Walkable
+
+Decorative only.
+
+--------------------------------------
+
+ROCKS
+
+BLOCKED
+
+Suggested Collider
+
+Circle
+
+Radius
+
+20px
+
+--------------------------------------
+
+FENCE
+
+BLOCKED
+
+--------------------------------------
+
+ARCH OPENING
+
+WALKABLE
+
+ARCH PILLARS
+
+BLOCKED
